@@ -2,5 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.1.0
+
+### Feature
+
+* add method to decide if token is a headline (d6cc18557a0d)
+* add method to determine headline level (73a156cf4a3e)
+
 ## v0.0.0 Initial release
 
