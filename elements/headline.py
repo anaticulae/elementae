@@ -30,9 +30,9 @@ Zeitschriftenartikel"""
 HEADLINES = utila.splitlines(HEADLINES)  # pylint:disable=E1101
 
 
-def isheadline(line: str) -> bool:
+def isheadline(line: str, strict: bool = True) -> bool:
     """\
-    >>> isheadline('1. Einleitung')
+    >>> isheadline('1. Einleitung', strict=False)
     True
     >>> isheadline('Eidesstattliche Versicherung')
     True
@@ -40,7 +40,7 @@ def isheadline(line: str) -> bool:
     line = line.strip()
     if utila.similar(HEADLINES, line):
         return True
-    if parse_headline(line):
+    if not strict and parse_headline(line):
         return True
     return False
 
@@ -49,6 +49,7 @@ def noheadline(  # pylint:disable=R0911
         line: str,
         length_min: int = 5,
         wordcount_max: int = 15,
+        strict: bool = True,
 ) -> bool:
     """\
     >>> noheadline(' Anzahl der Transaktionen')
@@ -78,7 +79,7 @@ def noheadline(  # pylint:disable=R0911
     # \uF0B7
     if '' in line:
         return True
-    if isheadline(line):
+    if isheadline(line, strict=strict):
         return False
     return False
 
