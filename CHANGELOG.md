@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.2.0
+
+### Feature
+
+* add strict flag to make headline check more strict (0dfd328b1d50)
+* extend valid headline list (125e947018a3)
+
 ## v0.1.2
 
 ### Fix
