@@ -44,7 +44,11 @@ def isheadline(line: str) -> bool:
     return False
 
 
-def noheadline(line: str) -> bool:
+def noheadline(  # pylint:disable=R0911
+        line: str,
+        length_min: int = 5,
+        wordcount_max: int = 15,
+) -> bool:
     """\
     >>> noheadline(' Anzahl der Transaktionen')
     True
@@ -59,6 +63,14 @@ def noheadline(line: str) -> bool:
     if line.count('.') > 5:
         # filter table items
         # DISKUSSION ................ 36
+        return True
+    if len(line) < length_min:
+        # remove numbers or very short text chunks
+        return True
+    if len(line.split()) > wordcount_max:
+        return True
+    if line.count(' ') >= 10:
+        # POTENZIALBESCHREIBUNG                 114
         return True
     wordslength = [len(word) for word in line.split()]
     mean_words_length = statistics.mean(wordslength)
