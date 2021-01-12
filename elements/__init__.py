@@ -14,6 +14,6 @@ from elements.headline import isheadline
 from elements.headline import noheadline
 from elements.level import level_numbered
 
-__version__ = '0.2.0'
+__version__ = '0.2.1'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))

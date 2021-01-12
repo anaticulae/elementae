@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.2.1
+
+### Fix
+
+* do not ignore long headlines (bf679a291f05)
+
 ## v0.2.0
 
 ### Feature
