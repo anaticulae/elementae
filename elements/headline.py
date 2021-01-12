@@ -69,8 +69,9 @@ def noheadline(  # pylint:disable=R0911
         return True
     if len(line.split()) > wordcount_max:
         return True
-    if line.count(' ') >= 10:
+    if ' ' * 10 in line:
         # POTENZIALBESCHREIBUNG                 114
+        # Do not count spaces to avoid ignoring `long` headlines
         return True
     wordslength = [len(word) for word in line.split()]
     mean_words_length = statistics.mean(wordslength)
