@@ -27,7 +27,7 @@ Literaturverzeichnis
 Quellenverzeichnis
 Vorwort
 Zeitschriftenartikel"""
-HEADLINES = utila.splitlines(HEADLINES)  # pylint:disable=E1101
+HEADLINES = utila.splitlines(HEADLINES)  # pylint:disable=R0204
 
 
 def isheadline(line: str, strict: bool = True) -> bool:
