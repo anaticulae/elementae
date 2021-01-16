@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.3.0
+
+### Feature
+
+* move toc and pagenumber code (05e93c17602c)
+
 ## v0.2.1
 
 ### Fix
