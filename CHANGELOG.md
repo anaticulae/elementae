@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.3.2
+
+### Feature
+
+* externalize parameter for noheadline check (988f3482e8e8)
+
 ## v0.3.1
 
 ### Feature
