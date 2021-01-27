@@ -76,7 +76,7 @@ def noheadline(  # pylint:disable=R0911
         return True
     wordslength = [len(word) for word in line.split()]
     mean_words_length = statistics.mean(wordslength)
-    if mean_words_length < mean_words_length:
+    if mean_words_length < mean_words_length_min:
         return True
     # \uF0B7
     if '' in line:
