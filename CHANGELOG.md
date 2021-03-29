@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.4.1
+
+### Feature
+
+* extend public API (cd86e62c7bc6)
+
+### Fix
+
+* fix spelling error (80ebe28e1712)
+
 ## v0.4.0
 
 ### Feature
