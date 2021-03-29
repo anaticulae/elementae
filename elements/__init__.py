@@ -12,6 +12,7 @@ import os
 import elements.__patch__
 from elements.headline import isheadline
 from elements.headline import noheadline
+from elements.headline import noheadline_pattern
 from elements.level import level_numbered
 from elements.pagenumber import InvalidPage
 from elements.pagenumber import InvalidPages
