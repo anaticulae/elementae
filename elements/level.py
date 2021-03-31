@@ -19,6 +19,8 @@ def level_numbered(raw: str) -> int:
     3
     >>> level_numbered('a. Gesamtbewertung')
     4
+    >>> level_numbered('Kapitel 1: Dies ist eine Überschrift')
+    1
     """
     # TODO: SUPPORT LEVEL WITHOUT SPACE
     raw = raw.strip()
@@ -32,6 +34,10 @@ def level_numbered(raw: str) -> int:
     chars = level_numbered_chars(raw)
     if chars is not None:
         return chars
+
+    chapter = level_chapters(raw)
+    if chapter is not None:
+        return chapter
     return None
 
 
@@ -57,3 +63,16 @@ def level_numbered_chars(raw: str) -> int:
     if not CHAR_PATTERN.match(raw):
         return None
     return 4
+
+
+CHAPTER_PATTERN = re.compile(r'^Kapitel[ ]{0,3}\d{1,2}[\:\.]', re.IGNORECASE)
+
+
+def level_chapters(raw: str) -> int:
+    """\
+    >>> level_chapters('Kapitel 1: Dies ist eine Überschrift')
+    1
+    """
+    if not CHAPTER_PATTERN.match(raw):
+        return None
+    return 1
