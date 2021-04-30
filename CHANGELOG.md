@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.4.3
+
+### Feature
+
+* add appendix level (3cbe0cced5bf)
+
 ## v0.4.2
 
 ### Feature
