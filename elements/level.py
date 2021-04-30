@@ -52,7 +52,7 @@ def level_numbered_dots(raw: str) -> int:
     return len(splitted)
 
 
-CHAR_PATTERN = re.compile(r'^[a-zA-Z]\.')
+CHAR_PATTERN = re.compile(r'^[A-Z]\.', re.IGNORECASE)
 APPENDIX_PATTERN = re.compile(r'^[A-Z]\.\d{1,2}\.', re.IGNORECASE)
 
 
