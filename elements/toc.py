@@ -39,7 +39,7 @@ def istoc(headline: str) -> bool:
     >>> istoc('Inhaltverzeichnis')
     True
     """
-    if utila.similar(headline, TOC, maxdiff=0.9):
+    if utila.similar(current=headline, expected=TOC, maxdiff=0.9):
         return True
     return False
 
