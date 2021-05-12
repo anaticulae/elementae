@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.5.0
+
+### Feature
+
+* add method to verify if headline is table of content (eb9379604be2)
+
 ## v0.4.3
 
 ### Feature
