@@ -19,6 +19,7 @@ relict of old times. Arabic numbers are used for the whole document.
 """
 
 import dataclasses
+import re
 import typing
 
 import iamraw
@@ -104,3 +105,37 @@ def validate_pageorder(items) -> InvalidPages:
                     ))
             roman = pagenumber
     return result
+
+
+def ispagenumber(number: str) -> bool:
+    """Determine if passed `number` is a page number. Empty `number` is
+    not a page number.
+
+    Args:
+        number(str): string to check if it is a number
+    Returns:
+        True if roman or numeric number is given
+
+    >>> ispagenumber('99')
+    True
+    >>> ispagenumber('-1-')
+    True
+    >>> ispagenumber('iv')
+    True
+    >>> ispagenumber('32/54')
+    True
+    >>> ispagenumber('0.5')
+    False
+    """
+    number = number.strip()
+    # - 1 -, -2-,
+    number = str(number).replace('-', '', 2)
+    if not number:
+        return False
+    if number.isnumeric():
+        return True
+    if utila.isroman(number):
+        return True
+    if re.match(r'\d{1,3}/\d{1,3}', number):
+        return True
+    return False
