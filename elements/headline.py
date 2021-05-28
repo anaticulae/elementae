@@ -48,12 +48,12 @@ def isheadline(line: str, strict: bool = True) -> bool:
 
 
 def noheadline(  # pylint:disable=R0911
-        line: str,
-        length_min: int = 5,
-        wordcount_max: int = 15,
-        dots_max: int = 5,
-        mean_words_length_min: float = 3.0,
-        strict: bool = True,
+    line: str,
+    length_min: int = 5,
+    wordcount_max: int = 15,
+    dots_max: int = 5,
+    mean_words_length_min: float = 3.0,
+    strict: bool = True,
 ) -> bool:
     """\
     >>> noheadline(' Anzahl der Transaktionen')

@@ -19,13 +19,10 @@ UTF8 = 'utf8'
 with open(os.path.join(ROOT, 'README.md'), mode='rt', encoding=UTF8) as fp:
     README = fp.read()
 
-with open(
-        os.path.join(ROOT, 'elements/__init__.py'), mode='rt',
-        encoding=UTF8) as fp:
+with open(os.path.join(ROOT, 'elements/__init__.py'), encoding=UTF8) as fp:
     VERSION = re.search(r'__version__ = \'(.*?)\'', fp.read()).group(1)
 
-with open(
-        os.path.join(ROOT, "requirements.txt"), mode='rt', encoding=UTF8) as fp:
+with open(os.path.join(ROOT, "requirements.txt"), encoding=UTF8) as fp:
     REQUIRES = [line for line in fp.readlines() if line and '#' not in line]
 
 if __name__ == "__main__":
