@@ -15,18 +15,57 @@ import utila
 import elements
 
 HEADLINES = utila.splitlines("""\
+Abbildungen
+Abbildungsverzeichnis
+Abbreviations
+Abbreviationtable
+Abkürzungen
+Abkürzungsverzeichnis
+Abstract
 Anhang
 Anhangsverzeichnis
+Appendix
+Aufbau
+Aufbau und Gliederung
+Ausblick
 Bibliografie
+Bibliographie
+Bibliography
+Contents
+Danksagung
+Diskussion
+Diskussion und Ausblick
 Eidesstattliche Erklärung
 Eidesstattliche Versicherung
 Einleitung
+Ergebnis
+Ergebnisse
 Erklärung
+Grundlagen
+Inhalt
+Inhaltsverzeichnis
 Internetquellen
+Introduction
+Kurzfassung
+Literatur
+Literature
 Literaturverzeichnis
+Motivation und Zielsetzung
+Perspektiven
+Quellen
 Quellenverzeichnis
+Reference
+References
+Symbol
+Symbolverzeichnis
+Tabellen
+Tabellenverzeichnis
+Table of Content
 Vorwort
+Weiterführende Literatur
 Zeitschriftenartikel
+Zusammenfassung
+Zusammenfassung und Ausblick
 """)
 
 
