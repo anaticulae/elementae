@@ -15,6 +15,7 @@ def iscaption(text: str) -> bool:
     >>> iscaption('Abbildung 4.2.: Softwareentwicklung Übersicht')
     True
     """
+    text = text.strip()
     if iscaption_figure(text):
         return True
     return False
@@ -38,6 +39,7 @@ def iscaption_figure(text: str) -> bool:
     >>> iscaption_figure('Abbildung11.1 Entwicklungsstand der Proﬁle')
     True
     """
+    text = text.strip()
     if FIGURE.match(text):
         return True
     return False
