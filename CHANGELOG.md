@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.8.0
+
+### Feature
+
+* add method to check against caption line (f22fb87b6bf2)
+
 ## v0.7.0
 
 ### Feature
