@@ -15,57 +15,57 @@ import utila
 import elements
 
 HEADLINES = utila.splitlines("""\
-Abbildungen
-Abbildungsverzeichnis
-Abbreviations
-Abbreviationtable
-Abkürzungen
-Abkürzungsverzeichnis
-Abstract
-Anhang
-Anhangsverzeichnis
-Appendix
-Aufbau
-Aufbau und Gliederung
-Ausblick
-Bibliografie
-Bibliographie
-Bibliography
-Contents
-Danksagung
-Diskussion
-Diskussion und Ausblick
-Eidesstattliche Erklärung
-Eidesstattliche Versicherung
-Einleitung
-Ergebnis
-Ergebnisse
-Erklärung
-Grundlagen
-Inhalt
-Inhaltsverzeichnis
-Internetquellen
-Introduction
-Kurzfassung
-Literatur
-Literature
-Literaturverzeichnis
-Motivation und Zielsetzung
-Perspektiven
-Quellen
-Quellenverzeichnis
-Reference
-References
-Symbol
-Symbolverzeichnis
-Tabellen
-Tabellenverzeichnis
-Table of Content
-Vorwort
-Weiterführende Literatur
-Zeitschriftenartikel
-Zusammenfassung
-Zusammenfassung und Ausblick
+ABBILDUNGEN
+ABBILDUNGSVERZEICHNIS
+ABBREVIATIONS
+ABBREVIATIONTABLE
+ABKÜRZUNGEN
+ABKÜRZUNGSVERZEICHNIS
+ABSTRACT
+ANHANG
+ANHANGSVERZEICHNIS
+APPENDIX
+AUFBAU
+AUFBAU UND GLIEDERUNG
+AUSBLICK
+BIBLIOGRAFIE
+BIBLIOGRAPHIE
+BIBLIOGRAPHY
+CONTENTS
+DANKSAGUNG
+DISKUSSION
+DISKUSSION UND AUSBLICK
+EIDESSTATTLICHE ERKLÄRUNG
+EIDESSTATTLICHE VERSICHERUNG
+EINLEITUNG
+ERGEBNIS
+ERGEBNISSE
+ERKLÄRUNG
+GRUNDLAGEN
+INHALT
+INHALTSVERZEICHNIS
+INTERNETQUELLEN
+INTRODUCTION
+KURZFASSUNG
+LITERATUR
+LITERATURE
+LITERATURVERZEICHNIS
+MOTIVATION UND ZIELSETZUNG
+PERSPEKTIVEN
+QUELLEN
+QUELLENVERZEICHNIS
+REFERENCE
+REFERENCES
+SYMBOL
+SYMBOLVERZEICHNIS
+TABELLEN
+TABELLENVERZEICHNIS
+TABLE OF CONTENT
+VORWORT
+WEITERFÜHRENDE LITERATUR
+ZEITSCHRIFTENARTIKEL
+ZUSAMMENFASSUNG
+ZUSAMMENFASSUNG UND AUSBLICK
 """)
 
 
