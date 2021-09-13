@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v0.9.0
+
+### Feature
+
+* add code caption detector (a911bf83a0af)
+* add valid headline (ac3680609189)
+* strip input data (d4151093105f)
+
 ## v0.8.0
 
 ### Feature
