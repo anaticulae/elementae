@@ -26,18 +26,14 @@ def level_numbered(raw: str) -> int:
     raw = raw.strip()
     if not raw:
         return None
-
-    dots = level_numbered_dots(raw)
-    if dots is not None:
-        return dots
-
-    chars = level_numbered_chars(raw)
-    if chars is not None:
-        return chars
-
-    chapter = level_chapters(raw)
-    if chapter is not None:
-        return chapter
+    for strategy in (
+            level_numbered_dots,
+            level_numbered_chars,
+            level_chapters,
+    ):
+        parsed = strategy(raw)
+        if parsed is not None:
+            return parsed
     return None
 
 
