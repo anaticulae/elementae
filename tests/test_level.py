@@ -41,4 +41,4 @@ NOHEADLINE_LEVEL = """\
 ])
 def test_noheadline_level(noheadline):
     nolevel = elements.level_numbered(noheadline)
-    assert nolevel is False
+    assert nolevel is False  # pylint:disable=C2001
