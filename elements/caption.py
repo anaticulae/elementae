@@ -49,7 +49,7 @@ def iscaption(text: str) -> bool:
     >>> iscaption('Abbildung 4.2.: Softwareentwicklung Übersicht')
     True
     """
-    text = text.strip()
+    text = text_limit(text)
     if CAPTIONX.match(text):
         return True
     return False
@@ -65,7 +65,7 @@ def iscaption_figure(text: str) -> bool:
     >>> iscaption_figure('Figure1 : Valence and arousal describe emotions')
     True
     """
-    text = text.strip()
+    text = text_limit(text)
     if FIGUREX.match(text):
         return True
     return False
@@ -79,7 +79,7 @@ def iscaption_code(text: str) -> bool:
     >>> iscaption_code('Listing3.1:Bewertung von Tweets')
     True
     """
-    text = text.strip()
+    text = text_limit(text)
     if LISTINGX.match(text):
         return True
     return False
@@ -93,7 +93,13 @@ def iscaption_table(text: str) -> bool:
     >>> iscaption_table('Tab. 3: Mittelwerte und Standardabweichungen')
     True
     """
-    text = text.strip()
+    text = text_limit(text)
     if TABLEX.match(text):
         return True
     return False
+
+
+def text_limit(text):
+    text = text.strip()
+    text = text[0:25]
+    return text
