@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.10.0
+
+### Feature
+
+* add table caption checker (9918106aa1d7)
+* add single character as figure number (14a38495cab3)
+
 ## v0.9.0
 
 ### Feature
