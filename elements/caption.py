@@ -48,7 +48,7 @@ def iscaption(text: str) -> bool:
     return False
 
 
-FIGURE = compiles(r'Abb.?|Abbildung|Fig.?|Figure')
+FIGUREX = compiles(r'Abb.?|Abbildung|Fig.?|Figure')
 
 
 def iscaption_figure(text: str) -> bool:
@@ -59,12 +59,12 @@ def iscaption_figure(text: str) -> bool:
     True
     """
     text = text.strip()
-    if FIGURE.match(text):
+    if FIGUREX.match(text):
         return True
     return False
 
 
-LISTING = compiles(r'Listing')
+LISTINGX = compiles(r'Listing')
 
 
 def iscaption_code(text: str) -> bool:
@@ -73,6 +73,6 @@ def iscaption_code(text: str) -> bool:
     True
     """
     text = text.strip()
-    if LISTING.match(text):
+    if LISTINGX.match(text):
         return True
     return False
