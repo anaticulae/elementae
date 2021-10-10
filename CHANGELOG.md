@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.10.1
+
+### Fix
+
+* limit text too match long inputs with regex (79daf64f6665)
+
 ## v0.10.0
 
 ### Feature
