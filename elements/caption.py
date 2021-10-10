@@ -35,15 +35,21 @@ def compiles(caption: str):
     return result
 
 
+CAPTIONS = r"""
+Abb.?|Abbildung|Fig.?|Figure|
+Listing
+"""
+
+CAPTIONX = compiles(CAPTIONS)
+
+
 def iscaption(text: str) -> bool:
     """\
     >>> iscaption('Abbildung 4.2.: Softwareentwicklung Übersicht')
     True
     """
     text = text.strip()
-    if iscaption_figure(text):
-        return True
-    if iscaption_code(text):
+    if CAPTIONX.match(text):
         return True
     return False
 
