@@ -16,12 +16,13 @@ PATTERN = r"""
     (%s)
     [ ]{0,3}
     (
-        \d{1,2}\.?(\d{1,2}.?)?|
+        \d{1,2}\.?(\d{1,2}\.?)?|
         [A-Z]
     )
     [ ]{0,3}
-    :?
-    .{0,50}
+    \:{0,1}
+    [ ]{0,3}
+    (?P<text>.{3,50})
     $
 """
 
@@ -36,9 +37,9 @@ def compiles(caption: str):
 
 
 CAPTIONS = r"""
-Abb.?|Abbildung|Fig.?|Figure|
+Abbildung|Abb\.?|Figure|Fig\.?|
 Listing|
-Tab.?|Tabelle|Table
+Tabelle|Table|Tab\.?
 """
 
 CAPTIONX = compiles(CAPTIONS)
@@ -48,11 +49,21 @@ def iscaption(text: str) -> bool:
     """\
     >>> iscaption('Abbildung 4.2.: Softwareentwicklung Übersicht')
     True
+    >>> iscaption('Figure 1). This model can expl')
+    False
+    >>> iscaption('Abb. 5) eine Paper-and-Pencil-Version des SAM aus.')
+    False
     """
     text = text_limit(text)
-    if CAPTIONX.match(text):
-        return True
-    return False
+    matched = CAPTIONX.match(text)
+    matched = CAPTIONX.match(text)
+    if not matched:
+        return False
+    txt = matched['text']
+    if txt[0] == ')':
+        # TODO: IMPROVE NEGATIVE LOOKUP
+        return False
+    return True
 
 
 FIGUREX = compiles(r'Abb.?|Abbildung|Fig.?|Figure')
