@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.10.2
+
+### Fix
+
+* improve negative caption lookup (025362f89f7f)
+
 ## v0.10.1
 
 ### Fix
