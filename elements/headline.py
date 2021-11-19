@@ -103,6 +103,8 @@ def noheadline(  # pylint:disable=R0911
     """\
     >>> noheadline(' Anzahl der Transaktionen')
     True
+    >>> noheadline('• count')
+    True
     """
     line = line.strip()
     if issentence(line):
@@ -128,6 +130,9 @@ def noheadline(  # pylint:disable=R0911
         return True
     # \uF0B7
     if '' in line:
+        return True
+    if line[0] == '•':
+        # just a list
         return True
     if isheadline(line, strict=strict):
         return False
