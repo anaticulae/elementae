@@ -122,7 +122,7 @@ def noheadline(  # pylint:disable=R0911,R1260
         return True
     if len(line.split()) > wordcount_max:
         return True
-    if ' ' * 10 in line:
+    if '          ' in line:
         # POTENZIALBESCHREIBUNG                 114
         # Do not count spaces to avoid ignoring `long` headlines
         return True
