@@ -8,13 +8,14 @@
 # =============================================================================
 
 import pytest
+import utila
 
 import elements
 
-NOHEADLINES = """\
+NOHEADLINES = utila.splitlines("""\
 2.3. Ermittelte charakteristische Punkte mit Standardabweichung . . . . . 7
 Abbildung 1.3.: Impulsfolgegruppe besteht aus drei Impulsfolgen
-""".splitlines()
+""")
 
 
 @pytest.mark.parametrize('headline', [
