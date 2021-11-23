@@ -2,6 +2,23 @@
 
 Every noteable change is logged here.
 
+## v0.11.0
+
+### Feature
+
+* reduce decision time (cd3dc96dc61e)
+* move headlines from sections (48b616bce68d)
+* use cache to reduce processing time (d24719681e45)
+* do not detect headlines with to low char rate in title (3610149795e6)
+
+### Fix
+
+* remove not reachable code (a94715e4bb66)
+
+### Documentation
+
+* clarify interface documentation (3dbbbe96cbb5)
+
 ## v0.10.3
 
 ### Feature
