@@ -45,5 +45,6 @@ if __name__ == "__main__":
         ],
         packages=[
             'elements',
+            'elements.headline',
         ],
     )
