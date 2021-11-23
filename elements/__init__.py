@@ -14,10 +14,11 @@ from elements.caption import iscaption
 from elements.caption import iscaption_code
 from elements.caption import iscaption_figure
 from elements.caption import iscaption_table
-from elements.headline import isheadline
-from elements.headline import noheadline
-from elements.headline import noheadline_pattern
-from elements.level import level_numbered
+from elements.headline.decide import isheadline
+from elements.headline.decide import noheadline
+from elements.headline.decide import noheadline_pattern
+from elements.headline.level import level_numbered
+from elements.headline.lookup import HEADLINES
 from elements.pagenumber import InvalidPage
 from elements.pagenumber import InvalidPages
 from elements.pagenumber import InvalidRomanPageNumber

@@ -1,0 +1,113 @@
+# =============================================================================
+# C O P Y R I G H T
+# -----------------------------------------------------------------------------
+# Copyright (c) 2021 by Helmut Konrad Fahrendholz. All rights reserved.
+# This file is property of Helmut Konrad Fahrendholz. Any unauthorized copy,
+# use or distribution is an offensive act against international law and may
+# be prosecuted under federal law. Its content is company confidential.
+# =============================================================================
+
+import re
+
+import utila
+
+import elements
+import elements.headline
+import elements.headline.lookup
+
+
+@utila.cacheme
+def parse_headline(raw: str, before=None):  # pylint:disable=R0911
+    """\
+    >>> parse_headline('2. Einleitung')
+    ('Einleitung', 1, '2.')
+    >>> parse_headline('b. Ergebnisse und Schlussfolgerungen zu Unterfrage 1')
+    ('Ergebnisse und Schlussfolgerungen zu Unterfrage 1', 4, 'b.')
+    """
+    parsed = parse_leveled_headline(raw)
+    if parsed:
+        rawlevel, title = parsed['level'], parsed['text']
+        level = elements.level_numbered(rawlevel)
+        if level is False:  # pylint:disable=C2001
+            return None
+        return title, level, rawlevel
+    parsed = parse_chapter_level(raw)
+    if parsed:
+        title, rawlevel = parsed
+        level = 1  # pylint:disable=R0204
+        if 'anhang' in rawlevel.lower():
+            # ANHANG
+            #   ANHANG 1: ZUSAMMENFASSUNG
+            #   ANHANG 2: SUMMARY
+            level = 2
+        return title, level, rawlevel
+    if utila.similar(elements.HEADLINES, raw):
+        return raw, 1, ''
+    if before:
+        # look back and check for `Kapitel-X-Pattern`
+        before = utila.normalize_text(before, normalize_spaces=True)
+        chapter = elements.noheadline_pattern(before)
+        if chapter:
+            return raw, 1, ''
+    if not utila.similar(elements.HEADLINES, raw):
+        return None
+    return raw, None, ''
+
+
+@utila.cacheme
+def parse_leveled_headline(line):
+    line = line.strip()
+    matched = re.match(HEADLINE, line)
+    if matched:
+        return matched
+    matched = re.match(CHARACTER_HEADLINE, line)
+    if matched:
+        return matched
+    return None
+
+
+@utila.cacheme
+def parse_chapter_level(raw: str) -> tuple:
+    """\
+    >>> parse_chapter_level('KAPITEL 1: EINLEITUNG')
+    ('EINLEITUNG', 'KAPITEL 1:')
+    >>> parse_chapter_level('KAPITEL 5: FÜR EINE BÜRGERNAHE UND DEMOKRATISCH LEGITIMIERTE EUROPÄISCH')
+    ('FÜR EINE BÜRGERNAHE UND DEMOKRATISCH LEGITIMIERTE EUROPÄISCH', 'KAPITEL 5:')
+    """
+    parsed = HEADLINE_CHAPTER.match(raw)
+    if not parsed:
+        return None
+    title, rawlevel = parsed['title'], parsed['rawlevel']
+    return title, rawlevel
+
+
+HEADLINE = re.compile(
+    ('^'
+     r'(?P<level>(\d{1,2}\.?)+\d{0,2})'
+     r'[ ]{1,5}'
+     r'(?P<text>.+?)'
+     '$'),
+    re.VERBOSE,
+)
+
+CHARACTER_HEADLINE = re.compile(
+    ('^'
+     r'(?P<level>([a-z]{1,2}\.)+[a-z\d]{0,2})'
+     r'[ ]{1,5}'
+     r'(?P<text>.+?)'
+     '$'),
+    re.VERBOSE | re.IGNORECASE,
+)
+
+HEADLINE_CHAPTER = utila.compiles(r"""
+    ^
+    (?P<rawlevel>
+        (KAPITEL|CHAPTER|ANHANG|APPENDIX)
+        [ ]{0,5}
+        \d{1,2}
+    [ ]{0,5}
+    \:
+    )
+    [ ]{0,5}
+    (?P<title>.+)
+""")
