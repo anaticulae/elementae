@@ -53,9 +53,7 @@ def parse_headline(raw: str, before=None):  # pylint:disable=R0911
         chapter = elements.noheadline_pattern(before)
         if chapter:
             return raw, 1, ''
-    if not utila.similar(elements.HEADLINES, raw):
-        return None
-    return raw, None, ''
+    return None
 
 
 @utila.cacheme
