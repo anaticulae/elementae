@@ -63,13 +63,14 @@ def noheadline(  # pylint:disable=R0911,R1260
     if len(line) < length_min:
         # remove numbers or very short text chunks
         return True
-    if len(line.split()) > wordcount_max:
+    splitted = line.split()
+    if len(splitted) > wordcount_max:
         return True
-    if '          ' in line:
+    if WHITELINE in line:
         # POTENZIALBESCHREIBUNG                 114
         # Do not count spaces to avoid ignoring `long` headlines
         return True
-    wordslength = [len(word) for word in line.split()]
+    wordslength = [len(word) for word in splitted]
     mean_words_length = statistics.mean(wordslength)
     if mean_words_length < mean_words_length_min:
         return True
@@ -87,6 +88,9 @@ def noheadline(  # pylint:disable=R0911,R1260
     if isheadline(line, strict=strict):
         return False
     return False
+
+
+WHITELINE = '          '
 
 
 @utila.cacheme
