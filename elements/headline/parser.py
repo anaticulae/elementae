@@ -21,8 +21,12 @@ def parse_headline(raw: str, before=None):  # pylint:disable=R0911
     """\
     >>> parse_headline('2. Einleitung')
     ('Einleitung', 1, '2.')
+
     >>> parse_headline('b. Ergebnisse und Schlussfolgerungen zu Unterfrage 1')
     ('Ergebnisse und Schlussfolgerungen zu Unterfrage 1', 4, 'b.')
+
+    >>> parse_headline('Durchführung der Untersuchung', before='Kapitel 3')  # chapter level
+    ('Durchführung der Untersuchung', 1, '')
     """
     parsed = parse_leveled_headline(raw)
     if parsed:
