@@ -63,6 +63,12 @@ def noheadline(  # pylint:disable=R0911,R1260
     if len(line) < length_min:
         # remove numbers or very short text chunks
         return True
+    # \uF0B7
+    if line[0] == '':
+        return True
+    if line[0] == '•':
+        # just a list
+        return True
     splitted = line.split()
     if len(splitted) > wordcount_max:
         return True
@@ -73,12 +79,6 @@ def noheadline(  # pylint:disable=R0911,R1260
     wordslength = [len(word) for word in splitted]
     mean_words_length = statistics.mean(wordslength)
     if mean_words_length < mean_words_length_min:
-        return True
-    # \uF0B7
-    if '' in line:
-        return True
-    if line[0] == '•':
-        # just a list
         return True
     parsed = elements.headline.parser.parse_headline(line)
     if parsed:
