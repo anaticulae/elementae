@@ -13,6 +13,8 @@ import iamraw
 import iamraw.toc
 import utila
 
+import elements.headline.lookup
+
 
 class InvalidTocItems(collections.UserList):  # pylint:disable=too-many-ancestors
     pass
@@ -39,14 +41,10 @@ def istoc(headline: str) -> bool:
     >>> istoc('Inhaltverzeichnis')
     True
     """
-    if utila.similar(current=headline, expected=TOC, maxdiff=0.9):
+    if utila.similar(
+            current=headline,
+            expected=elements.headline.lookup.TOC,
+            maxdiff=0.9,
+    ):
         return True
     return False
-
-
-TOC = utila.splitlines("""
-Inhaltsverzeichnis
-Inhalt
-Content
-Table of Content
-""")
