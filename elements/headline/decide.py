@@ -23,6 +23,10 @@ def isheadline(line: str, strict: bool = True) -> bool:
     True
     >>> isheadline('Eidesstattliche Versicherung')
     True
+    >>> isheadline('A B S T R A C T')
+    True
+    >>> isheadline('H a l l o w i e')
+    False
     """
     line = line.strip()
     if utila.similar(elements.HEADLINES, line):
