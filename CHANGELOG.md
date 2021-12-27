@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v0.11.3
+
+### Feature
+
+* improve noheadline checker (61d8b04942f8)
+* add missing headline (204cc132a78f)
+
+### Fix
+
+* improve single char check (2fc701390282)
+
 ## v0.11.2
 
 ### Fix
