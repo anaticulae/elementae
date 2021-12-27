@@ -54,6 +54,8 @@ def noheadline(  # pylint:disable=R0911,R1260
     True
     >>> noheadline('u.u.a 10')
     True
+    >>> noheadline('A B S T R A C T')
+    False
     """
     line = line.strip()
     if issentence(line):
@@ -70,6 +72,8 @@ def noheadline(  # pylint:disable=R0911,R1260
     if line[0] in LISTSTART:
         # just a list
         return True
+    if singlechar(line):
+        return False
     splitted = line.split()
     if len(splitted) > wordcount_max:
         return True
@@ -112,6 +116,25 @@ def noheadline_pattern(item: str) -> bool:
     if NOHEADLINE_CHAPTER.match(item):
         return True
     if NOHEADLINE_APPENDIX.match(item):
+        return True
+    return False
+
+
+@utila.cacheme
+def singlechar(text: str) -> bool:
+    """\
+    >>> singlechar('A B S T R A C T')
+    True
+    >>> singlechar('  ')
+    False
+    """
+    if not text:
+        return False
+    splitted = [len(token) for token in text.strip().split()]
+    if not splitted:
+        return False
+    median = statistics.median(splitted)
+    if median == 1:
         return True
     return False
 
