@@ -63,10 +63,7 @@ def noheadline(  # pylint:disable=R0911,R1260
     if len(line) < length_min:
         # remove numbers or very short text chunks
         return True
-    # \uF0B7
-    if line[0] == '':
-        return True
-    if line[0] == '•':
+    if line[0] in LISTSTART:
         # just a list
         return True
     splitted = line.split()
@@ -90,6 +87,8 @@ def noheadline(  # pylint:disable=R0911,R1260
     return False
 
 
+# \uF0B7
+LISTSTART = '•'
 WHITELINE = '          '
 
 
