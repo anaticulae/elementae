@@ -85,13 +85,13 @@ def noheadline(  # pylint:disable=R0911,R1260
         # POTENZIALBESCHREIBUNG                 114
         # Do not count spaces to avoid ignoring `long` headlines
         return True
+    for pattern in (TOCLINE, BIBLINE):
+        if pattern.match(line):
+            return True
     wordslength = [len(word) for word in splitted]
     mean_words_length = statistics.mean(wordslength)
     if mean_words_length < mean_words_length_min:
         return True
-    for pattern in (TOCLINE, BIBLINE):
-        if pattern.match(line):
-            return True
     parsed = elements.headline.parser.parse_headline(line)
     if parsed:
         # title
