@@ -63,32 +63,18 @@ def noheadline(  # pylint:disable=R0911,R1260
     True
     """
     line = line.strip()
-    if issentence(line):
-        # ignore extracted lists which are interpreted as headlines
-        # TODO: CHECK THIS!
+    if len(line) < length_min:
+        # remove numbers or very short text chunks
         return True
     if line.count('.') > dots_max:
         # filter table items
         # DISKUSSION ................ 36
         return True
-    if len(line) < length_min:
-        # remove numbers or very short text chunks
-        return True
-    if line[0] in LISTSTART:
-        # just a list
-        return True
-    if singlechar(line):
-        return False
+    if (returnvalue := noheadline_simple(line)) is not None:
+        return returnvalue
     splitted = line.split()
     if len(splitted) > wordcount_max:
         return True
-    if WHITELINE in line:
-        # POTENZIALBESCHREIBUNG                 114
-        # Do not count spaces to avoid ignoring `long` headlines
-        return True
-    for pattern in (TOCLINE, BIBLINE):
-        if pattern.match(line):
-            return True
     wordslength = [len(word) for word in splitted]
     mean_words_length = statistics.mean(wordslength)
     if mean_words_length < mean_words_length_min:
@@ -103,6 +89,27 @@ def noheadline(  # pylint:disable=R0911,R1260
     if isheadline(line, strict=strict):
         return False
     return False
+
+
+def noheadline_simple(line: str) -> bool:
+    if issentence(line):
+        # ignore extracted lists which are interpreted as headlines
+        # TODO: CHECK THIS!
+        return True
+    if line[0] in LISTSTART:
+        # just a list
+        return True
+    if singlechar(line):
+        return False
+    if WHITELINE in line:
+        # POTENZIALBESCHREIBUNG                 114
+        # Do not count spaces to avoid ignoring `long` headlines
+        return True
+    for pattern in (TOCLINE, BIBLINE):
+        if pattern.match(line):
+            return True
+    # NONE SIGNALS THAT NO PATTERN WAS DETECTED
+    return None
 
 
 # 2 background          9
