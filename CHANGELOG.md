@@ -2,6 +2,21 @@
 
 Every noteable change is logged here.
 
+## v0.12.0
+
+### Feature
+
+* extend chapter headlines (a6397a40bcc1)
+* add option to detect numbers with spaces inside (3e369cf5cc09)
+* treat quotes not as headline (224f370f27a0)
+* add method to check that line is a quote (5f4592ea0017)
+* skip bib line as potential headline (9c8fd09cf8b0)
+* add single char check (bbd6002b8360)
+
+### Documentation
+
+* Happy New Year! (a7878fe1d3cb)
+
 ## v0.11.3
 
 ### Feature
