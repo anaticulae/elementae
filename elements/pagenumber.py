@@ -83,9 +83,8 @@ def validate_pageorder(items) -> InvalidPages:
                     ))
             arabic = current_arabic
         except ValueError:
-            try:
-                current_roman = utila.arabic(pagenumber)
-            except KeyError:
+            current_roman = utila.arabic(pagenumber)
+            if current_roman is None:
                 # invalid roman number `ixx` correct is `xix`
                 result.append(
                     InvalidRomanPageNumber(
