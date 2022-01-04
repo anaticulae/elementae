@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v0.13.0
+
+### Feature
+
+* add method to distinguish between numbered and steps toc (ea17f2c3ae09)
+* use cache to reduce execution time (b19d98c04a4d)
+* add level steps parser (b65de459dd74)
+
 ## v0.12.1
 
 ## v0.12.0
