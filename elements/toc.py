@@ -13,6 +13,7 @@ import iamraw
 import iamraw.toc
 import utila
 
+import elements.headline.level
 import elements.headline.lookup
 
 
@@ -48,3 +49,17 @@ def istoc(headline: str) -> bool:
     ):
         return True
     return False
+
+
+def istocnumbered(toc) -> bool:
+    """Decide if a toc contains headlines with numbered or steps pattern."""
+    if not toc:
+        return True
+    levels = len([
+        item for item in toc if item.level and
+        elements.headline.level.level_numbered_dots(item.level)
+    ])
+    rate = levels / len(toc)
+    if rate < 0.8:  # TODO: HOLY VALUE
+        return False
+    return True

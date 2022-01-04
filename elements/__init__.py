@@ -30,6 +30,7 @@ from elements.pagenumber import validate_pageorder
 from elements.pagenumber import validate_toc
 from elements.quote import isquote
 from elements.toc import istoc
+from elements.toc import istocnumbered
 from elements.toc import toc_flat
 
 __version__ = '0.12.1'
