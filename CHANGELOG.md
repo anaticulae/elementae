@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.14.0
+
+### Feature
+
+* make toc decider length dependent (2facaf02bbd8)
+* add abstract headline (4d7d33ecfc1f)
+
 ## v0.13.1
 
 ### Feature
