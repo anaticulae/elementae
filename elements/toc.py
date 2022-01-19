@@ -93,6 +93,7 @@ def istocnumbered(toc, rate_min: callable = TOC_NUMBERED_MIN) -> bool:
     """Decide if a toc contains headlines with numbered or steps pattern."""
     if not toc:
         return True
+    toc = toc_flat(toc)
     levels = len([
         item for item in toc if item.level and
         elements.headline.level.level_numbered_dots(item.level)
@@ -107,6 +108,7 @@ def istocnumbered(toc, rate_min: callable = TOC_NUMBERED_MIN) -> bool:
 def istocnolevel(toc) -> bool:
     if not toc:
         return False
+    toc = toc_flat(toc)
     levels = len([item for item in toc if item.level is None])
     rate = levels / len(toc)
     if rate < 0.65:  # TODO: HOLY VALUE
@@ -152,6 +154,7 @@ def istocsections(toc) -> bool:
     """Decide if a toc contains headlines with numbered or steps pattern."""
     if not toc:
         return False
+    toc = toc_flat(toc)
     levels = len([
         item for item in toc
         if item.level and level_sections(item.level) in (1, 2)
@@ -207,6 +210,7 @@ def istocstepped(toc) -> bool:
     """Decide if a toc contains headlines with numbered or steps pattern."""
     if not toc:
         return False
+    toc = toc_flat(toc)
     levels = len([item for item in toc if level_steps(item.level)])
     rate = levels / len(toc)
     if rate < 0.65:  # TODO: HOLY VALUE
