@@ -191,7 +191,7 @@ def level_steps(raw: str) -> int:  # pylint:disable=R0911
     """
     raw = raw.strip() if raw else None
     if not raw:
-        return 1
+        return None
     if re.match(r'^(KAPITEL)[ ]{1,3}\d{1,2}', raw, re.IGNORECASE):
         return 1
     if re.match(r'^(A|B|C|D|E|F|G|H)\.', raw, re.IGNORECASE):
