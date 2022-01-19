@@ -30,6 +30,8 @@ def toc_flat(toc: iamraw.Toc):
 
     def godown(item: iamraw.toc.TocLinkMixin):
         result.append(item)
+        if not hasattr(item, '__getitem__'):
+            return
         for children in item:
             godown(children)
 
