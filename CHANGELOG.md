@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.15.0
+
+### Feature
+
+* add method to determine toc style (df3b494da5ff)
+* extend headlines lookup (4e1b82f626ce)
+
 ## v0.14.0
 
 ### Feature
