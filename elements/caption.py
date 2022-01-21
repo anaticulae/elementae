@@ -39,7 +39,8 @@ def compiles(caption: str):
 CAPTIONS = r"""
 Abbildung|Abb\.?|Figure|Fig\.?|
 Listing|
-Tabelle|Table|Tab\.?
+Tabelle|Table|Tab\.?|
+Graph
 """
 
 CAPTIONX = compiles(CAPTIONS)
@@ -53,6 +54,8 @@ def iscaption(text: str) -> bool:
     False
     >>> iscaption('Abb. 5) eine Paper-and-Pencil-Version des SAM aus.')
     False
+    >>> iscaption('Graph 8: scenario 3: slow development of private e-currency.')
+    True
     """
     text = text_limit(text)
     matched = CAPTIONX.match(text)
@@ -65,7 +68,7 @@ def iscaption(text: str) -> bool:
     return True
 
 
-FIGUREX = compiles(r'Abb.?|Abbildung|Fig.?|Figure')
+FIGUREX = compiles(r'Abb.?|Abbildung|Fig.?|Figure|Graph')
 
 
 def iscaption_figure(text: str) -> bool:
