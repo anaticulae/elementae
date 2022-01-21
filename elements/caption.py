@@ -56,7 +56,6 @@ def iscaption(text: str) -> bool:
     """
     text = text_limit(text)
     matched = CAPTIONX.match(text)
-    matched = CAPTIONX.match(text)
     if not matched:
         return False
     txt = matched['text']
