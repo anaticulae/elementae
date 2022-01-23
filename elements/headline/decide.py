@@ -59,6 +59,8 @@ def noheadline(  # pylint:disable=R0911,R1260
     False
     >>> noheadline('[77] Alexander Keller. Methods and Apparatus for Topology Discovery')
     True
+    >>> noheadline('risk_total_kons = b0 + b1   sex + b2   age + b3    v_total_r')
+    True
 
     # TODO: THATS CONFUSING, THINK ABOUT SOLVING THIS ISSUE
     # IS WITHOUT SPACES TO STRICT?
@@ -96,7 +98,7 @@ def noheadline(  # pylint:disable=R0911,R1260
     return False
 
 
-def noheadline_simple(line: str) -> bool:
+def noheadline_simple(line: str) -> bool:  # pylint:disable=R0911
     if issentence(line):
         # ignore extracted lists which are interpreted as headlines
         # TODO: CHECK THIS!
@@ -113,8 +115,24 @@ def noheadline_simple(line: str) -> bool:
     for pattern in (TOCLINE, BIBLINE):
         if pattern.match(line):
             return True
+    if too_many_invalid_headline_chars(line):
+        return True
     # NONE SIGNALS THAT NO PATTERN WAS DETECTED
     return None
+
+
+def too_many_invalid_headline_chars(text: str) -> bool:
+    """\
+    >>> too_many_invalid_headline_chars('risk_total_kons = b0 + b1   sex + b2   age + b3    v_total_r')
+    True
+    """
+    special = 0
+    for char in '+-=_!@#$%^&*':
+        special += text.count(char)
+    special += len(utila.parse_numbers(text))
+    if special > 5:
+        return True
+    return False
 
 
 # 2 background          9
