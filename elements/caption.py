@@ -56,6 +56,8 @@ def iscaption(text: str) -> bool:
     False
     >>> iscaption('Graph 8: scenario 3: slow development of private e-currency.')
     True
+    >>> iscaption('Tab. 4.2.: Wirkungsgrad der elektrischen Komponenten [Pfe14], [IAV15].')
+    True
     """
     text = text_limit(text)
     matched = CAPTIONX.match(text)
@@ -104,6 +106,8 @@ TABLEX = compiles(r'Tab.?|Tabelle|Table')
 def iscaption_table(text: str) -> bool:
     """\
     >>> iscaption_table('Tab. 3: Mittelwerte und Standardabweichungen')
+    True
+    >>> iscaption_table('Tab.4.2.: Wirkungsgrad der elektrischen Komponenten [Pfe14], [IAV15].')
     True
     """
     text = text_limit(text)
