@@ -78,7 +78,6 @@ def level_steps(raw: str) -> int:  # pylint:disable=R0911
         return 5
     if re.match(r'^[a-h]{2}\)', raw, re.IGNORECASE):
         return 6
-    assert 0, raw
     return None
 
 
