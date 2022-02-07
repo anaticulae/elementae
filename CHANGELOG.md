@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.16.1
+
+### Feature
+
+* extend noheadline detector (c84653756c72)
+
 ## v0.16.0
 
 ### Feature
