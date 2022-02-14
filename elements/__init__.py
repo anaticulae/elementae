@@ -27,7 +27,7 @@ from elements.headline.lookup import APPENDIX
 from elements.headline.lookup import BIBLIOGRAPHY
 from elements.headline.lookup import CHAPTER
 from elements.headline.lookup import FIGURETABLE
-from elements.headline.lookup import GLOSSAR
+from elements.headline.lookup import GLOSSARY
 from elements.headline.lookup import HEADLINES
 from elements.headline.lookup import LEGAL
 from elements.headline.lookup import LISTINGS
@@ -55,3 +55,6 @@ from elements.toc import toc_style
 __version__ = '0.16.1'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+
+# TODO: REMOVE WITH MAJOR
+GLOSSAR = GLOSSARY
