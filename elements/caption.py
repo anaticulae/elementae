@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import re
-
 import utila
 
 PATTERN = r"""
@@ -29,12 +27,7 @@ PATTERN = r"""
 
 
 def compiles(caption: str):
-    pattern = PATTERN % caption
-    result = re.compile(
-        pattern,
-        flags=utila.NOCASE_VERBOSE,
-    )
-    return result
+    return utila.compiles(PATTERN % caption)
 
 
 CAPTIONS = r"""
