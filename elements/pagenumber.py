@@ -109,7 +109,7 @@ def validate_pageorder(items) -> InvalidPages:
     return result
 
 
-def ispagenumber(number: str) -> bool:
+def ispagenumber(number: str) -> bool:  # pylint:disable=R0911
     """Determine if passed `number` is a page number. Empty `number` is
     not a page number.
 
@@ -128,6 +128,8 @@ def ispagenumber(number: str) -> bool:
     True
     >>> ispagenumber('0.5')
     False
+    >>> ispagenumber('080315015325')
+    False
     """
     # - 1 -, -2-,
     number = str(number).replace('-', '', 2)
@@ -136,6 +138,8 @@ def ispagenumber(number: str) -> bool:
     if not number:
         return False
     if number.isnumeric():
+        if len(number) > 5:
+            return False
         return True
     if utila.isroman(number):
         return True
