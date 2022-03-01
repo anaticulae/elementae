@@ -53,3 +53,18 @@ def test_toc_numbered():
     style = elements.toc_style(flat, toc_length_min=1)
     assert style == iamraw.TocStyle.NUMBERED
     assert elements.istocnumbered(flat) == iamraw.TocStyle.NUMBERED
+
+
+INVALID_TOC = [
+    elements.InvalidPage(
+        current=62,
+        before=66,
+        text='Evaluierung und Demonstration des Prototypen',
+        raw_location=0,
+    )
+]
+
+
+def test_toc_validate():
+    invalids = elements.validate_toc(EXAMPLE)
+    assert invalids == INVALID_TOC
