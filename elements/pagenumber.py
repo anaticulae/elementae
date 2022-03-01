@@ -109,8 +109,9 @@ def validate_pageorder(items) -> InvalidPages:
 
 
 def ispagenumber(number: str) -> bool:  # pylint:disable=R0911
-    """Determine if passed `number` is a page number. Empty `number` is
-    not a page number.
+    """Determine if passed `number` is a page number.
+
+    Empty `number` is not a page number.
 
     Args:
         number(str): string to check if it is a number
