@@ -130,11 +130,11 @@ def ispagenumber(number: str) -> bool:  # pylint:disable=R0911
     False
     >>> ispagenumber('080315015325')
     False
+    >>> ispagenumber('204-06')
+    False
     """
     # - 1 -, -2-,
-    number = str(number).replace('-', '', 2)
-    # strip after to remove trailling white spaces produce by replace
-    number = number.strip()
+    number = str(number).strip('- ')
     if not number:
         return False
     if number.isnumeric():
