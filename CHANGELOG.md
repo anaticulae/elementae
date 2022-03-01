@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v0.17.0
+
+### Feature
+
+* add explicit figure caption (ab76d7505899)
+* extend headline table (d74f66ef8ec4)
+
+### Fix
+
+* do not strip `minus` inside potential number (7c13f59d243f)
+* skip too long page numbers as potential page number (a7545b9ef6f1)
+* skip missing page number (caa06b5de6fe)
+
 ## v0.16.3
 
 ### Fix
