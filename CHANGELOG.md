@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.17.1
+
+### Feature
+
+* extend abbreviation list (0d485ea5b14c)
+
 ## v0.17.0
 
 ### Feature
