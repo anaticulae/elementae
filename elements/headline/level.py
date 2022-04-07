@@ -16,6 +16,8 @@ import utila
 def level_numbered(raw: str) -> int:
     """Convert number to raw level.
 
+    >>> level_numbered('0 Einleitung')
+    1
     >>> level_numbered('5 Geology')
     1
     >>> level_numbered('2.1.3. Abschluss')
@@ -86,6 +88,8 @@ def level_steps(raw: str) -> int:  # pylint:disable=R0911
 def level_numbered_dots(raw: str) -> int:
     """\
     >>> assert level_numbered_dots('A.1.1.') is None
+    >>> level_numbered_dots('6.0 Ausblick is')
+    1
     """
     raw = raw.split()[0]
     try:
@@ -94,6 +98,9 @@ def level_numbered_dots(raw: str) -> int:
             return False
     except ValueError:
         return None
+    if len(splitted) > 1 and splitted[-1] == 0:  # pylint:disable=compare-to-zero
+        # 6.0 Ausblick is
+        splitted = splitted[:-1]
     return len(splitted)
 
 
