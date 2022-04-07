@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.17.3
+
+### Feature
+
+* handle zero numbered ending (cc1961b1c43c)
+* extend headlines (ccf3133e0d9c)
+
 ## v0.17.2
 
 ### Feature
