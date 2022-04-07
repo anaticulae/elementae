@@ -24,6 +24,8 @@ def level_numbered(raw: str) -> int:
     4
     >>> level_numbered('Kapitel 1: Dies ist eine Überschrift')
     1
+    >>> level_numbered('A. Gesamtbewertung')
+    1
     """
     # TODO: SUPPORT LEVEL WITHOUT SPACE
     raw = raw.strip()
@@ -82,6 +84,9 @@ def level_steps(raw: str) -> int:  # pylint:disable=R0911
 
 
 def level_numbered_dots(raw: str) -> int:
+    """\
+    >>> assert level_numbered_dots('A.1.1.') is None
+    """
     raw = raw.split()[0]
     try:
         splitted = [int(item) for item in raw.split('.') if item]
@@ -93,7 +98,12 @@ def level_numbered_dots(raw: str) -> int:
 
 
 CHAR_PATTERN = re.compile(r'^[A-Z]\.', re.IGNORECASE)
-APPENDIX_PATTERN = re.compile(r'^[A-Z]\.\d{1,2}\.?', re.IGNORECASE)
+
+APPENDIX_PATTERN_FIRST = re.compile(r'^[A-Z](\.|[ ])')
+
+APPENDIX_PATTERN_SECOND = re.compile(r'^[A-Z]\.\d{1,2}\.?')
+
+APPENDIX_PATTERN_THIRD = re.compile(r'^[A-Z]\.\d{1,2}\.\d{1,2}\.?')
 
 
 def level_numbered_chars(raw: str) -> int:
@@ -107,8 +117,12 @@ def level_numbered_chars(raw: str) -> int:
     """
     if not CHAR_PATTERN.match(raw):
         return None
-    if APPENDIX_PATTERN.match(raw):
+    if APPENDIX_PATTERN_THIRD.match(raw):
+        return 3
+    if APPENDIX_PATTERN_SECOND.match(raw):
         return 2
+    if APPENDIX_PATTERN_FIRST.match(raw):
+        return 1
     return 4
 
 
