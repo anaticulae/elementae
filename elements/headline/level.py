@@ -134,7 +134,12 @@ def level_numbered_chars(raw: str) -> int:
     return 4
 
 
-CHAPTER_PATTERN = re.compile(r'^Kapitel[ ]{0,3}\d{1,2}[\:\.]', re.IGNORECASE)
+CHAPTER_PATTERN = utila.compiles(r"""
+    ^(KAPITEL|CHAPTER)
+    [ ]{0,3}
+    (\d{1,2})
+    [\:\.]{0,1}
+""")
 
 
 def level_chapters(raw: str) -> int:
@@ -145,14 +150,6 @@ def level_chapters(raw: str) -> int:
     if not CHAPTER_PATTERN.match(raw):
         return None
     return 1
-
-
-CHAPTER = utila.compiles(r"""
-    ^
-    (KAPITEL|CHAPTER)
-    [ ]{0,3}
-    (\d{1,2})
-""")
 
 
 def determine_patch(raw: str) -> int:
@@ -176,7 +173,7 @@ def determine_patch(raw: str) -> int:
     """
     if not raw:
         return None
-    if matched := CHAPTER.match(raw):
+    if matched := CHAPTER_PATTERN.match(raw):
         return int(matched[2])
     splitted = [item for item in raw.rsplit('.') if item]
     if not splitted:
