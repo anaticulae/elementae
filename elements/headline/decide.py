@@ -104,6 +104,8 @@ def noheadline_simple(line: str) -> bool:  # pylint:disable=R0911
     """\
     >>> noheadline_simple('[Fos10] FOSTER, Elvis C.: Software Engineering - A Methodical Approach. Xlibris')
     True
+    >>> noheadline_simple('8. Auflage, Springer-Verlag, Heidelberg (2010)')
+    True
     """
     if issentence(line):
         # ignore extracted lists which are interpreted as headlines
@@ -120,7 +122,7 @@ def noheadline_simple(line: str) -> bool:  # pylint:disable=R0911
         # POTENZIALBESCHREIBUNG                 114
         # Do not count spaces to avoid ignoring `long` headlines
         return True
-    for pattern in (TOCLINE, BIBLINE):
+    for pattern in (TOCLINE, BIBLINE, BIBLINE_AUFLAGE):
         if pattern.match(line):
             return True
     if too_many_invalid_headline_chars(line):
@@ -164,6 +166,15 @@ BIBLINE = utila.compiles(r"""
         )
         \s{0,2}
     \]
+""")
+# 8. Auflage, Springer-Verlag, Heidelberg (2010)
+BIBLINE_AUFLAGE = utila.compiles(r"""
+    ^
+    \d{1,2}\.
+    [ ]{0,2}
+    Auflage
+    .{0,90}
+    \(\d{4}\)
 """)
 # \uF0B7
 LISTSTART = '•'
