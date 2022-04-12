@@ -144,10 +144,27 @@ def too_many_invalid_headline_chars(text: str) -> bool:
 
 
 # 2 background          9
-TOCLINE = utila.compiles(r'^\d{1,2}.{3,}[ ]{1,}\d{1,3}$')
+TOCLINE = utila.compiles(r"""
+    ^
+    \d{1,2}
+    .{3,}
+    [ ]{1,}
+    \d{1,3}
+    $
+""")
 # [77] Alexander Keller. Methods and Apparatus for Topology Discovery
 # [Fos10] FOSTER, Elvis C.: Software Engineering
-BIBLINE = utila.compiles(r'^\[\s{0,2}(\d{1,3}|[\w\d\.]{1,6})\s{0,2}\]')
+BIBLINE = utila.compiles(r"""
+    ^
+    \[
+        \s{0,2}
+        (
+            \d{1,3}|
+            [\w\d\.]{1,6}
+        )
+        \s{0,2}
+    \]
+""")
 # \uF0B7
 LISTSTART = '•'
 WHITELINE = '          '
