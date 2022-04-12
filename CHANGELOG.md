@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v0.18.0
+
+### Feature
+
+* extend invalid headline pattern (c199b884a661)
+* reduce range of possible chapter (f316922b3d1f)
+* move patch determiner from words (1942c584bf98)
+
+### Fix
+
+* limit regex execution time (5e025f8868a9)
+* extend no headline pattern (2ec37e6f639c)
+
 ## v0.17.3
 
 ### Feature
