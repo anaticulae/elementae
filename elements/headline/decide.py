@@ -28,9 +28,11 @@ def isheadline(line: str, strict: bool = True) -> bool:
     True
     >>> isheadline('H a l l o w i e')
     False
+    >>> isheadline('Integrationstest Einlesen', strict=True)
+    False
     """
     line = line.strip()
-    if utila.similar(elements.HEADLINES, line):
+    if utila.verysimilar(current=line, expected=elements.HEADLINES):
         return True
     if not strict and elements.headline.parser.parse_headline(line):
         if noheadline(line):
