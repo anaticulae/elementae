@@ -179,7 +179,7 @@ BIBLINE_AUFLAGE = utila.compiles(r"""
     \(\d{4}\)
 """)
 # \uF0B7
-LISTSTART = '•'
+LISTSTART = '•\uf0a7\uf0b7'
 WHITELINE = '          '
 ABBR_START = utila.compiles(r"""
     ^
