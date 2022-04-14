@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.18.1
+
+### Feature
+
+* increase required equality (23822be7fdf3)
+
 ## v0.18.0
 
 ### Feature
