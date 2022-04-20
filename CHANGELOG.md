@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.18.2
+
+### Feature
+
+* extend caption code word (ae70e373269d)
+
 ## v0.18.1
 
 ### Feature
