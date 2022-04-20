@@ -72,6 +72,8 @@ def noheadline(  # pylint:disable=R0911,R1260
     True
     >>> noheadline('2  Methode3') # highnote
     False
+    >>> noheadline('Wirtschaftsforschung 82 (1), S.61-75.')
+    True
     """
     line = line.strip()
     if len(line) < length_min:
