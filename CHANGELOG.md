@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.18.3
+
+### Feature
+
+* extend no headline decider (5ce01cd125fd)
+
 ## v0.18.2
 
 ### Feature
