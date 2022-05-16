@@ -32,6 +32,8 @@ def isheadline(line: str, strict: bool = True) -> bool:
     False
     >>> isheadline('4 https://github.com/prometheus/node_exporter')
     False
+    >>> isheadline('12. Literaturverzeichnis:')
+    True
     """
     line = line.strip()
     if utila.verysimilar(current=line, expected=elements.HEADLINES):
