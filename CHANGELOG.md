@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.19.0
+
+### Feature
+
+* add method to parse captions (243ca4a16631)
+
 ## v0.18.3
 
 ### Feature
