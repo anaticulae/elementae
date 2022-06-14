@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.20.0
+
+### Feature
+
+* use configo cacher (658f2b713d9e)
+* extend page number detector (728f63efac84)
+
 ## v0.19.0
 
 ### Feature
