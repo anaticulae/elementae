@@ -17,7 +17,6 @@ import elements.headline
 import elements.headline.lookup
 
 
-@configo.cache_large
 def parse_headline(raw: str, before=None) -> tuple:
     """\
     >>> parse_headline('2. Einleitung')
@@ -58,7 +57,7 @@ def parse_headline(raw: str, before=None) -> tuple:
 
 
 @configo.cache_large
-def parse_leveled_headline(line):
+def parse_leveled_headline(line: str):
     line = line.strip()
     matched = re.match(HEADLINE, line)
     if matched:
