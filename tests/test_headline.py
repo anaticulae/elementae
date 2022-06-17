@@ -22,6 +22,7 @@ NOHEADLINE = utila.splitlines("""\
 Gutachter: Prof. Dr. Gjorgji Madjarov
 - Dr.-Ing. -
 Vorsitzender: Prof. Dr. Florian Tschorsch Gutachter: Prof. Dr. Odej Kao
+s.  Abb.  7a).
 """)
 
 

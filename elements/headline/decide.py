@@ -210,6 +210,7 @@ ABBR_START = utila.compiles(r"""
         o\.s\.|
         u\.a\.|
         z\.b\.|
+        s\.[ ]{0,3}Abb\.[ ]{0,3}\d{1,2}|
         \d{2}\.\d{2}\.\d{2} # TODO: MOVE THIS DATE
     )
 """)
