@@ -18,6 +18,10 @@ Abbildung 1.3.: Impulsfolgegruppe besteht aus drei Impulsfolgen
 Gutachter: Prof. Dr. Gjorgji Madjarov
 """)
 
+NOHEADLINE = utila.splitlines("""\
+Gutachter: Prof. Dr. Gjorgji Madjarov
+""")
+
 
 @pytest.mark.parametrize('headline', [
     pytest.param(item, id=str(index))
@@ -26,6 +30,14 @@ Gutachter: Prof. Dr. Gjorgji Madjarov
 def test_is_not_headline(headline):
     isheadline = elements.isheadline(headline, strict=False)
     assert not isheadline, headline
+
+
+@pytest.mark.parametrize('headline', [
+    pytest.param(item, id=str(index)) for index, item in enumerate(NOHEADLINE)
+])
+def test_noheadline(headline):
+    noheadline = elements.noheadline(headline)
+    assert noheadline, headline
 
 
 @pytest.mark.timeout(2)
