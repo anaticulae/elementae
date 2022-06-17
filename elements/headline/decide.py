@@ -15,6 +15,7 @@ import utila
 
 import elements
 import elements.headline.lookup
+import elements.headline.negative
 import elements.headline.parser
 
 
@@ -105,6 +106,8 @@ def noheadline(  # pylint:disable=R0911,R1260
         if utila.char_rate(parsed[0]) < 0.5:
             return True
     if elements.isquote(line):
+        return True
+    if elements.headline.negative.noheadline(line):
         return True
     if isheadline(line, strict=strict):
         return False
