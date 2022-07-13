@@ -47,6 +47,9 @@ def isheadline(line: str, strict: bool = True) -> bool:
     return False
 
 
+HEADLINE_CHAR_RATE_MIN = configo.HV_PERCENT_PLUS(default=25)
+
+
 @configo.cache_large
 def noheadline(  # pylint:disable=R0911,R1260
     line: str,
@@ -82,6 +85,8 @@ def noheadline(  # pylint:disable=R0911,R1260
     True
     >>> noheadline('4 https://github.com/prometheus/node_exporter')
     True
+    >>> noheadline('28,2 27,1')
+    True
     """
     line = line.strip()
     if len(line) < length_min:
@@ -111,6 +116,8 @@ def noheadline(  # pylint:disable=R0911,R1260
         return True
     if isheadline(line, strict=strict):
         return False
+    if utila.char_rate(line) < HEADLINE_CHAR_RATE_MIN:
+        return True
     return False
 
 
