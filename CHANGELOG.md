@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.21.1
+
+### Feature
+
+* extend headlines list (a9e4575054bb)
+
 ## v0.21.0
 
 ### Feature
