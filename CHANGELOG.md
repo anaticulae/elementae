@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.21.2
+
+### Feature
+
+* use real holy values (f86901f793e7)
+* add no headline decider (17a5c232abdf)
+
 ## v0.21.1
 
 ### Feature
