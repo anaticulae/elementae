@@ -18,6 +18,25 @@ import utila
 import elements.headline.level
 import elements.headline.lookup
 
+TOC_NUMBERED_RATE_MIN = configo.HolyRate(items=(
+    (1, 1),
+    (5, 3),
+    (8, 4),
+    (10, 5),
+    (15, 10),
+    (20, 15),
+    (30, 22),
+    (40, 30),
+    (50, 40),
+    (60, 50),
+))
+
+TOC_SECTIONS_RATE_MIN = configo.HV_PERCENT_PLUS(default=65)
+
+TOC_STEPPED_RATE_MIN = configo.HV_PERCENT_PLUS(default=65)
+
+TOC_NOLEVEL_RATE_MIN = configo.HV_PERCENT_PLUS(default=65)
+
 
 class InvalidTocItems(collections.UserList):  # pylint:disable=too-many-ancestors
     pass
@@ -75,21 +94,7 @@ def toc_style(
     return iamraw.TocStyle.NUMBERED
 
 
-TOC_NUMBERED_MIN = configo.HolyRate(items=(
-    (1, 1),
-    (5, 3),
-    (8, 4),
-    (10, 5),
-    (15, 10),
-    (20, 15),
-    (30, 22),
-    (40, 30),
-    (50, 40),
-    (60, 50),
-))
-
-
-def istocnumbered(toc, rate_min: callable = TOC_NUMBERED_MIN) -> bool:
+def istocnumbered(toc, rate_min: callable = TOC_NUMBERED_RATE_MIN) -> bool:
     """Decide if a toc contains headlines with numbered pattern."""
     if not toc:
         return True
@@ -103,9 +108,6 @@ def istocnumbered(toc, rate_min: callable = TOC_NUMBERED_MIN) -> bool:
     if rate < rate_min:
         return False
     return True
-
-
-TOC_NOLEVEL_RATE_MIN = configo.HV_PERCENT_PLUS(default=65)
 
 
 def istocnolevel(toc) -> bool:
@@ -151,9 +153,6 @@ def level_sections(raw: str) -> int:  # pylint:disable=R0911
     if LEVEL_SECTIONS_PART.match(raw):
         return 2
     return 3
-
-
-TOC_SECTIONS_RATE_MIN = configo.HV_PERCENT_PLUS(default=65)
 
 
 def istocsections(toc) -> bool:
@@ -214,8 +213,6 @@ def level_steps(raw: str) -> int:  # pylint:disable=R0911
 
 
 STEPS_ROMAN = utila.compiles(r'^(I|II|III|IIII|IV|V|VI|VII|VIII|VIII)\.?')
-
-TOC_STEPPED_RATE_MIN = configo.HV_PERCENT_PLUS(default=65)
 
 
 def istocstepped(toc) -> bool:
