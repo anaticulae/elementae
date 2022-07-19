@@ -193,6 +193,8 @@ def level_steps(raw: str) -> int:  # pylint:disable=R0911
     >>> level_steps('dd) Bewertung')
     6
     >>> assert level_steps('1.2.3 I am numbered') is None
+    >>> level_steps('IV.1 Polymerisation')
+    4
     """
     raw = raw.strip() if raw else None
     if not raw:
@@ -201,6 +203,8 @@ def level_steps(raw: str) -> int:  # pylint:disable=R0911
         return 1
     if re.match(r'^(A|B|C|D|E|F|G|H)\.', raw, re.IGNORECASE):
         return 2
+    if STEPS_ROMAN_SUB.match(raw):
+        return 4
     if STEPS_ROMAN.match(raw):
         return 3
     if re.match(r'^\d{1,2}\.(?!\d)', raw, re.IGNORECASE):
@@ -213,6 +217,14 @@ def level_steps(raw: str) -> int:  # pylint:disable=R0911
 
 
 STEPS_ROMAN = utila.compiles(r'^(I|II|III|IIII|IV|V|VI|VII|VIII|VIII)\.?')
+STEPS_ROMAN_SUB = utila.compiles(r"""
+    ^
+    (I|II|III|IIII|IV|V|VI|VII|VIII|VIII)
+    [ ]{0,1}
+    \.
+    [ ]{0,1}
+    \d{1,2}
+""")
 
 
 def istocstepped(toc) -> bool:
