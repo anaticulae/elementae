@@ -192,6 +192,8 @@ def level_steps(raw: str) -> int:  # pylint:disable=R0911
     5
     >>> level_steps('dd) Bewertung')
     6
+    >>> level_steps('(1) "weite" Auffassung der Vertrauensfrage')  # home021a
+    7
     >>> assert level_steps('1.2.3 I am numbered') is None
     >>> level_steps('IV.1 Polymerisation')
     4
@@ -213,6 +215,8 @@ def level_steps(raw: str) -> int:  # pylint:disable=R0911
         return 5
     if re.match(r'^[a-h]{2}\)', raw, re.IGNORECASE):
         return 6
+    if re.match(r'^\(\d\)', raw, re.IGNORECASE):
+        return 7
     return None
 
 
