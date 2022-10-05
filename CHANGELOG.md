@@ -2,6 +2,15 @@
 
 Every noteable change is logged here.
 
+## v0.21.6 (2022-10-05)
+
+### Chore
+
+* remove nightly step (c9fa8b54d718)
+* upgrade requirements.txt (8a4cbfca45d6)
+* upgrade baw (d5ac057fd649)
+* do not run in privileged mode (0042b18d36f9)
+
 ## v0.21.4
 
 ### Feature
