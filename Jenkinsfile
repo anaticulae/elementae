@@ -25,23 +25,12 @@ pipeline {
         }
         stage('fast'){
             steps{
-                sh 'baw test fast -n5'
-            }
-        }
-        stage('long'){
-            steps{
-                sh 'baw test long -n8'
+                sh 'baw test fast -n5 --cov --junit_xml=report.xml'
             }
         }
         stage('lint'){
             steps{
                 sh 'baw lint'
-            }
-        }
-        stage('nightly'){
-            steps{
-                sh 'baw test nightly -n16 --cov --junit_xml=report.xml'
-                junit '**/report.xml'
             }
         }
         stage('release'){
