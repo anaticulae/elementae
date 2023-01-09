@@ -25,6 +25,9 @@ def parse_headline(raw: str, before=None) -> tuple:
 
     >>> parse_headline('Durchführung der Untersuchung', before='Kapitel 3')  # chapter level
     ('Durchführung der Untersuchung', 1, '')
+
+    >>> parse_headline('2.6.1.1. Hypoxia Inducible Factor')
+    ('Hypoxia Inducible Factor', 4, '2.6.1.1.')
     """
     parsed = parse_leveled_headline(raw)
     if parsed:
