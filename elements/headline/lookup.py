@@ -117,6 +117,16 @@ WEITERFÜHRENDE LITERATUR
 ZEITSCHRIFTENARTIKEL
 """)
 
+PUBLICATION = utila.splitlines("""
+Publikationen
+Publikation
+Publications
+Publication
+Veröffentlichungen und Konferenzbeiträge
+Veröffentlichungen
+Konferenzbeiträge
+""")
+
 CHAPTER = utila.splitlines("""
 AUFBAU
 AUFBAU UND GLIEDERUNG

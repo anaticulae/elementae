@@ -33,6 +33,7 @@ from elements.headline.lookup import GLOSSARY
 from elements.headline.lookup import HEADLINES
 from elements.headline.lookup import LEGAL
 from elements.headline.lookup import LISTINGS
+from elements.headline.lookup import PUBLICATION
 from elements.headline.lookup import SYMBOLTABLE
 from elements.headline.lookup import TABLETABLE
 from elements.headline.lookup import TOC
